@@ -13,18 +13,8 @@ class EnquiryController extends Controller
 {
     public function index()
     {
-        if (!Auth::guard('web')->check()) {
-            return redirect()->route('login');
-        }
-
-        if (Auth::user()->can('mails.view')) {
-            $mails = Enquiry::all();
-            return view('admin.mail.show', compact('mails'));
-        }
-
-        $message = "read emails";
-        return view('admin.unauthorised', compact('message'));
-
+        $mails = Enquiry::all();
+        return view('admin.mail.show', compact('mails'));
     }
 
     public function store(Request $request)
@@ -63,13 +53,8 @@ class EnquiryController extends Controller
         if (!Auth::guard('web')->check()) {
             return redirect()->route('login');
         }
-        if (Auth::user()->can('mails.view')) {
-            $mail = Enquiry::find($id);
-            return view('admin.mail.mail', compact('mail'));
-        }
-
-        $message = "read emails";
-        return view('admin.unauthorised', compact('message'));
+        $mail = Enquiry::find($id);
+        return view('admin.mail.mail', compact('mail'));
     }
 
     public function destroy($id)

@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>CODEI SYSTEMS | Log in</title>
+    <title>KPC | Admin Log in</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.7 -->
@@ -34,7 +34,7 @@
     </div>
     <!-- /.login-logo -->
     <div class="login-box-body">
-        <p class="login-box-msg">Sign in to CODEI SYSTEMS staff portal</p>
+        <p class="login-box-msg">Sign in to staff portal</p>
         @include('includes.messages')
         <form action="{{ route('login') }}" method="post">
             {{ csrf_field() }}
@@ -75,11 +75,6 @@
 
             </div>
             <hr>
-            <div class="row">
-                <div class="container">
-                    <p><b>Want to become a writer? <a href="{{ route('register') }}">Register here</a></b></p>
-                </div>
-            </div>
 
         </form>
 

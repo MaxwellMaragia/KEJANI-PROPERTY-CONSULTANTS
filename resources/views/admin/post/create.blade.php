@@ -162,7 +162,7 @@
                                     </div>
                                 </div>
                             </div>
-                            @can('posts.viewAny',Auth::user() || 'posts.view',Auth::user())
+
                             <div class="box">
                                 <div class="box-header">
                                     <h3 class="box-title">Publish/Feature</h3>
@@ -172,7 +172,6 @@
                                 <div class="box-body pad">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            @can('posts.viewAny',Auth::user())
 
                                                 <div class="col-md-12">
                                                     <div class="col-md-6 col-md-offset-3 text-center">
@@ -185,9 +184,6 @@
 
                                                 </div>
 
-                                            @endcan
-
-                                            @can('posts.view',Auth::user())
                                                 <div class="col-md-12">
                                                     <div class="col-md-6 col-md-offset-3 text-center">
                                                         <label>
@@ -198,7 +194,6 @@
                                                     </div>
                                                 </div>
                                                     <br>
-                                            @endcan
 
                                                 <div class="check hide col-md-6 col-md-offset-3">
                                                     <div class="form-group">
@@ -210,16 +205,12 @@
                                                             <input type="file" name="feature_image" accept="image/*" class="form-control" id="featured">
                                                         </div>
                                                     </div>
-
                                                 </div>
-
-
-
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            @endcan
+
                             <div class="box-footer">
                                 <button type="submit" class="btn btn-primary">Submit</button>
                                 <a class="btn btn-warning" href="{{ route('post.index') }}">Back</a>

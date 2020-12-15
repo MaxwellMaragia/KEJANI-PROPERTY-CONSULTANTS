@@ -16,7 +16,6 @@
       <ul class="sidebar-menu" data-widget="tree">
           <li class="header">MAIN NAVIGATION</li>
           <li><a href="{{ route('admin.home') }}"><i class="fa fa-dashboard text-aqua"></i> <span>Dashboard</span></a></li>
-          <li><a href="{{ route('downloads.index') }}"><i class="fa fa-file text-aqua"></i> <span>Downloads</span></a></li>
           <li><a href="{{ route('enquiry.index') }}"><i class="fa fa-envelope text-aqua"></i> <span>Mails</span></a></li>
           <li><a href="{{ route('seo.index') }}"><i class="fa fa-search text-aqua"></i> <span>Search engine optimization</span></a></li>
 
@@ -32,13 +31,25 @@
               <ul class="treeview-menu">
                   <li><a href="{{ route('banner.index') }}"><i class="fa fa-circle-o"></i>Banners</a></li>
                   <li><a href="{{ route('service.index') }}"><i class="fa fa-circle-o"></i>Services</a></li>
-                  <li><a href="{{ route('csd.index') }}"><i class="fa fa-circle-o"></i>Case studies</a></li>
-                  <li><a href="{{ route('offer.index') }}"><i class="fa fa-circle-o"></i>Offers</a></li>
                   <li><a href="{{ route('testimonials.index') }}"><i class="fa fa-circle-o"></i>Reviews</a></li>
-                  <li><a href="{{ route('portfolios.index') }}"><i class="fa fa-circle-o"></i>Portfolios</a></li>
                   <li><a href="{{ route('members.index') }}"><i class="fa fa-circle-o"></i>Members</a></li>
               </ul>
           </li>
+
+          <li class="treeview">
+              <a href="#">
+                  <i class="fa fa-home"></i> <span>Properties</span>
+                  <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+              </a>
+              <ul class="treeview-menu">
+                  <li><a href="{{ route('types.index') }}"><i class="fa fa-circle-o"></i> Types</a></li>
+                  <li><a href="{{ route('features.index') }}"><i class="fa fa-circle-o"></i> Features</a></li>
+                  <li><a href="{{ route('properties.index') }}"><i class="fa fa-circle-o"></i> Properties</a></li>
+              </ul>
+          </li>
+
           <li class="treeview">
               <a href="#">
                   <i class="fa fa-rss"></i> <span>Blog</span>
@@ -64,28 +75,9 @@
               <ul class="treeview-menu">
                   <li><a href="{{ url('admin/images') }}"><i class="fa fa-circle-o"></i> View all</a></li>
                   <li><a href="{{ url('admin/upload-images') }}"><i class="fa fa-circle-o"></i> Upload new</a></li>
-
-              </ul>
-          </li>
-
-
-          <li class="treeview">
-              <a href="#">
-                  <i class="fa fa-users"></i> <span>Staff accounts</span>
-                  <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-              </a>
-              <ul class="treeview-menu">
-                  <li><a href="{{ route('user.index') }}"><i class="fa fa-circle-o"></i> Users</a></li>
-                  <li><a href="{{ route('role.index') }}"><i class="fa fa-circle-o"></i> Roles</a></li>
-                  <li><a href="{{ route('permissions.index') }}"><i class="fa fa-circle-o"></i> Permissions</a></li>
               </ul>
           </li>
     </ul>
-
-
-
     </section>
     <!-- /.sidebar -->
   </aside>

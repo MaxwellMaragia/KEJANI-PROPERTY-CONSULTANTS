@@ -24,11 +24,7 @@ class TagController extends Controller
 
     public function create()
     {
-        if (Auth::user()->can('tags.create')) {
             return view('admin.tag.tag');
-        }
-        $message = "add new tags";
-        return view('admin.unauthorised', compact('message'));
     }
 
     public function store(Request $request)
@@ -47,12 +43,8 @@ class TagController extends Controller
 
     public function edit($id)
     {
-        if (Auth::user()->can('tags.update')) {
-            $tag = tag::where('id', $id)->first();
-            return view('admin.tag.edit', compact('tag'));
-        }
-        $message = "add new tags";
-        return view('admin.unauthorised', compact('message'));
+        $tag = tag::where('id', $id)->first();
+        return view('admin.tag.edit', compact('tag'));
     }
 
     public function update(Request $request, $id)
@@ -71,12 +63,8 @@ class TagController extends Controller
 
     public function destroy($id)
     {
-        if (Auth::user()->can('tags.delete')) {
-            tag::where('id', $id)->delete();
-            return redirect()->back()->with('success', 'Tag deleted successfully');
-        }
+        tag::where('id', $id)->delete();
+        return redirect()->back()->with('success', 'Tag deleted successfully');
 
-        $message = "add new tags";
-        return view('admin.unauthorised', compact('message'));
     }
 }

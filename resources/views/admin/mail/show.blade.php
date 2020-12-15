@@ -20,14 +20,9 @@
         <section class="content">
 
             <div class="box">
-                <div class="box-header">
-                    @can('posts.create',Auth::user())
-                        <a href="{{ route('post.create') }}" class="btn btn-primary"><span class="fa fa-plus"></span>   Add new</a>
-                    @endcan
-                </div>
                 <!-- /.box-header -->
                 <div class="box-body">
-                    @include('includes.messages')
+
                     <div class="table-responsive">
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>

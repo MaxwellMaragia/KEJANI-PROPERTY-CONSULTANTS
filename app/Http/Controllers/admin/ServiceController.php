@@ -26,13 +26,7 @@ class ServiceController extends Controller
 
     public function create()
     {
-        if(Auth::user()->can('services.update')) {
-            return view('admin.service.create');
-        }
-
-        $message = "add services";
-        return view('admin.unauthorised',compact('message'));
-
+        return view('admin.service.create');
     }
 
 
@@ -69,17 +63,8 @@ class ServiceController extends Controller
 
     public function edit($id)
     {
-
-        if(Auth::user()->can('services.update')) {
-            $service = service::where('id',$id)->first();
-            return view('admin.service.edit',compact('service'));
-        }
-
-        $message = "edit this service";
-        return view('admin.unauthorised',compact('message'));
-
-
-
+        $service = service::where('id',$id)->first();
+        return view('admin.service.edit',compact('service'));
     }
 
 
@@ -123,22 +108,15 @@ class ServiceController extends Controller
 
     public function destroy($id)
     {
+        $service = service::find($id);
+        $current_image = 'storage/files/services/'.substr($service->media,22);
 
-        if(Auth::user()->can('services.update')) {
-            $service = service::find($id);
-            $current_image = 'storage/files/services/'.substr($service->media,22);
-
-            //delete old service first
-            if(file_exists($current_image))
-            {
-                unlink($current_image);
-            }
-            service::where('id',$id)->delete();
-            return redirect()->back()->with('success','Service deleted successfully');
+        //delete old service first
+        if(file_exists($current_image))
+        {
+            unlink($current_image);
         }
-
-        $message = "delete this service";
-        return view('admin.unauthorised',compact('message'));
-
+        service::where('id',$id)->delete();
+        return redirect()->back()->with('success','Service deleted successfully');
     }
 }

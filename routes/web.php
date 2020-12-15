@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::group(['namespace' => 'Admin'], function (){
+Route::group(['namespace' => 'admin'], function (){
 
     Route::get('admin/home', 'HomeController@index')->name('admin.home');
     Route::resource('admin/post', 'PostController');
@@ -21,7 +21,9 @@ Route::group(['namespace' => 'Admin'], function (){
     Route::resource('admin/offer','OffersController');
     Route::resource('admin/seo','SeoController');
     Route::resource('admin/settings','SettingsController');
-    Route::resource('admin/downloads','DownloadController');
+    Route::resource('admin/features','FeaturesController');
+    Route::resource('admin/types','TypesController');
+    Route::resource('admin/properties','PropertyController');
     Route::resource('admin/testimonials','ReviewController');
     Route::resource('admin/portfolios','PortfolioController');
     Route::resource('admin/members','TeamController');
@@ -34,13 +36,14 @@ Route::group(['namespace' => 'Admin'], function (){
 
 });
 
-Route::group(['namespace' => 'User'], function(){
+Route::group(['namespace' => 'user'], function(){
 
     Route::get('/','HomeController@home');
     Route::get('/blog','HomeController@blog');
     Route::get('/about_us','HomeController@about');
     Route::get('/contact_us','HomeController@contact');
     Route::get('blog/{post}','HomeController@post')->name('post');
+    Route::get('property/{property}','HomeController@property')->name('property');
     Route::get('offers/','HomeController@offers');
     Route::get('portfolio/','HomeController@portfolio');
     Route::get('offer/{offer}','HomeController@offer')->name('offer');
@@ -48,9 +51,8 @@ Route::group(['namespace' => 'User'], function(){
     Route::get('blog/category/{category}','HomeController@category')->name('category');
     Route::get('blog/tag/{tag}','HomeController@tag')->name('tag');
     Route::get('search','HomeController@search')->name('search');
-    Route::get('case_study/{case_study}','HomeController@csd')->name('case-study');
-    Route::get('download/{download}','HomeController@download')->name('download');
-
+    Route::get('buy','HomeController@buy');
+    Route::get('rent','HomeController@rent');
 
 });
 

@@ -23,12 +23,7 @@ class SeoController extends Controller
 
     public function create()
     {
-        if(Auth::user()->can('pages.create')) {
-            return view('admin.seo.create');
-        }
-
-        $message = "create page settings";
-        return view('admin.unauthorised',compact('message'));
+        return view('admin.seo.create');
     }
 
     public function store(Request $request)
@@ -63,13 +58,8 @@ class SeoController extends Controller
 
     public function edit($id)
     {
-        if(Auth::user()->can('pages.update')) {
-            $seo = seo::where('id', $id)->first();
-            return view('admin.seo.edit', compact('seo'));
-        }
-
-        $message = "edit page settings";
-        return view('admin.unauthorised',compact('message'));
+        $seo = seo::where('id', $id)->first();
+        return view('admin.seo.edit', compact('seo'));
     }
 
     public function update(Request $request, $id)
@@ -103,13 +93,7 @@ class SeoController extends Controller
 
     public function destroy($id)
     {
-        if(Auth::user()->can('pages.delete')) {
-            seo::where('id',$id)->delete();
-            return redirect()->back()->with('success','SEO fields deleted successfully');
-        }
-
-        $message = "delete page settings";
-        return view('admin.unauthorised',compact('message'));
-
+        seo::where('id',$id)->delete();
+        return redirect()->back()->with('success','SEO fields deleted successfully');
     }
 }

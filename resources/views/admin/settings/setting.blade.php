@@ -108,13 +108,8 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="slug">Linkedin</label>
-                                    <input type="url" class="form-control" id="slug" name="linkedin" placeholder="Linkedin page link" required="required" value="{{ $linkedin->value }}">
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="slug">Github</label>
-                                    <input type="url" class="form-control" id="slug" name="github" placeholder="Github page link" required="required" value="{{ $github->value }}">
+                                    <label for="slug">Instagram</label>
+                                    <input type="url" class="form-control" id="slug" name="linkedin" placeholder="Instagram page link" required="required" value="{{ $instagram->value }}">
                                 </div>
 
                                 <div class="form-group">

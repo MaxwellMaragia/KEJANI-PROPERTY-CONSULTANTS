@@ -40,11 +40,6 @@
                                         <label for="name">Category title</label>
                                         <input type="text" class="form-control" id="name" name="name" placeholder="Category title">
                                     </div>
-
-                                    <div class="form-group">
-                                        <label for="slug">Category slug</label>
-                                        <input type="text" class="form-control" id="slug" name="slug" placeholder="Slug">
-                                    </div>
                                 </div>
 
                             </div>

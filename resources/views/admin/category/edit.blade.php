@@ -41,11 +41,6 @@
                                         <label for="name">Category title</label>
                                         <input type="text" class="form-control" id="name" name="name" placeholder="Tag" value="{{ $category->name }}">
                                     </div>
-
-                                    <div class="form-group">
-                                        <label for="slug">Category slug</label>
-                                        <input type="text" class="form-control" id="slug" name="slug" placeholder="Slug" value="{{ $category->slug }}">
-                                    </div>
                                 </div>
 
                             </div>

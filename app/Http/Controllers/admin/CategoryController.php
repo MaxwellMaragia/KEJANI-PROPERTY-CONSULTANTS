@@ -26,13 +26,7 @@ class CategoryController extends Controller
 
     public function create()
     {
-        if (Auth::user()->can('categories.create')) {
-            return view('admin.category.category');
-        }
-
-        $message = "add new category";
-        return view('admin.unauthorised', compact('message'));
-
+        return view('admin.category.category');
     }
 
     public function store(Request $request)
@@ -52,15 +46,8 @@ class CategoryController extends Controller
 
     public function edit($id)
     {
-        if (Auth::user()->can('categories.update')) {
-            $category = category::where('id', $id)->first();
-            return view('admin.category.edit', compact('category'));
-        }
-
-        $message = "edit this category";
-        return view('admin.unauthorised', compact('message'));
-
-
+        $category = category::where('id', $id)->first();
+        return view('admin.category.edit', compact('category'));
     }
 
 
@@ -73,7 +60,7 @@ class CategoryController extends Controller
 
         $category = category::find($id);
         $category->name = $request->name;
-        $category->slug = $request->slug;
+        $category->slug = Str::slug($request->name);
         $category->save();
 
         return redirect()->back()->with('success', 'Update was successful');
@@ -82,14 +69,7 @@ class CategoryController extends Controller
 
     public function destroy($id)
     {
-        //
-        if (Auth::user()->can('categories.delete')) {
-            category::where('id', $id)->delete();
-            return redirect()->back()->with('success', 'Category deleted successfully');
-        }
-
-        $message = "delete this category";
-        return view('admin.unauthorised', compact('message'));
-
+        category::where('id', $id)->delete();
+        return redirect()->back()->with('success', 'Category deleted successfully');
     }
 }

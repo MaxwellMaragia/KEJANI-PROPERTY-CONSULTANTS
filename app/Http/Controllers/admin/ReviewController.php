@@ -23,14 +23,7 @@ class ReviewController extends Controller
 
     public function create()
     {
-        if(Auth::user()->can('reviews.update')) {
-            return view('admin.testimonial.create');
-        }
-
-        $message = "add reviews";
-        return view('admin.unauthorised',compact('message'));
-
-
+        return view('admin.testimonial.create');
     }
 
 
@@ -68,18 +61,8 @@ class ReviewController extends Controller
 
     public function edit($id)
     {
-        if(Auth::user()->can('reviews.update')) {
-
-            $testimonial = testimonials::where('id',$id)->first();
-            return view('admin.testimonial.edit',compact('testimonial'));
-
-        }
-
-        $message = "edit reviews";
-        return view('admin.unauthorised',compact('message'));
-
-
-
+        $testimonial = testimonials::where('id',$id)->first();
+        return view('admin.testimonial.edit',compact('testimonial'));
     }
 
 
@@ -117,22 +100,15 @@ class ReviewController extends Controller
 
     public function destroy($id)
     {
-        if(Auth::user()->can('reviews.update')) {
-            $testimonial = testimonials::find($id);
-            $current_image = 'storage/files/testimonials/'.substr($testimonial->avatar,26);
+        $testimonial = testimonials::find($id);
+        $current_image = 'storage/files/testimonials/'.substr($testimonial->avatar,26);
 
-            //delete old testimonial first
-            if(file_exists($current_image))
-            {
-                unlink($current_image);
-            }
-            testimonials::where('id',$id)->delete();
-            return redirect()->back()->with('success','Testimonial deleted successfully');
+        //delete old testimonial first
+        if(file_exists($current_image))
+        {
+            unlink($current_image);
         }
-
-        $message = "delete this review";
-        return view('admin.unauthorised',compact('message'));
-
-
+        testimonials::where('id',$id)->delete();
+        return redirect()->back()->with('success','Testimonial deleted successfully');
     }
 }

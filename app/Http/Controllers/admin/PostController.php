@@ -48,18 +48,14 @@ class PostController extends Controller
             'body'=>'required',
         ]);
 
-
-
         $post = new post;
         $post->title = $request->title;
         $post->slug = Str::slug($request->title);
         $post->subtitle = $request->subtitle;
 
         //if user can publish post
-        if(Auth::user()->can('posts.viewAny'))
-        {
-            $post->status = $request->status;
-        }
+        $post->status = $request->status;
+
 
         //save image
         if($request->hasFile('image'))
@@ -70,15 +66,11 @@ class PostController extends Controller
         }
 
         //if user can feature post
-        if(Auth::user()->can('posts.view'))
+        $post->featured = $request->featured;
+        if($request->hasFile('feature_image'))
         {
-            $post->featured = $request->featured;
-            if($request->hasFile('feature_image'))
-            {
-                $post->feature_image = $request->feature_image->store('public/files/blog_images');
-            }
+            $post->feature_image = $request->feature_image->store('public/files/blog_images');
         }
-
 
 
         $post->meta_title = $request->meta_title;
@@ -99,17 +91,10 @@ class PostController extends Controller
     public function edit($id)
     {
         //
-
-        if(Auth::user()->can('posts.update'))
-        {
-            $post = post::with('tags','categories')->where('id',$id)->first();
-            $tags = tag::all();
-            $categories = category::all();
-            return view('admin.post.edit',compact('post','tags','categories'));
-        }
-
-        return redirect(url('admin/unauthorised'));
-
+        $post = post::with('tags','categories')->where('id',$id)->first();
+        $tags = tag::all();
+        $categories = category::all();
+        return view('admin.post.edit',compact('post','tags','categories'));
 
     }
 
@@ -127,19 +112,15 @@ class PostController extends Controller
         $post = post::find($id);
 
         //logic if new default image is uploaded
-        if($request->hasFile('image')){
-
-            //delete old image
-            $old_d_i = 'storage/files/blog_images/'.substr($request->c_default_image,25);
-            $file = substr($request->c_default_image,25);
-            if(file_exists($old_d_i) && strlen($file)>0)
-            {
-                unlink($old_d_i);
-            }
-            //save new to database
-            $post->image = $request->image->store('public/files/blog_images');
-
+        //delete old image
+        $old_d_i = 'storage/files/blog_images/'.substr($request->c_default_image,25);
+        $file = substr($request->c_default_image,25);
+        if(file_exists($old_d_i) && strlen($file)>0)
+        {
+            unlink($old_d_i);
         }
+        //save new to database
+        $post->image = $request->image->store('public/files/blog_images');
 
 
         $post->title = $request->title;
@@ -147,33 +128,23 @@ class PostController extends Controller
         $post->subtitle = $request->subtitle;
 
         //if user can publish post
-        if(Auth::user()->can('posts.viewAny'))
-        {
-            $post->status = $request->status;
-        }
+        $post->status = $request->status;
 
         //if user can feature post
-        if(Auth::user()->can('posts.view'))
+        $post->featured = $request->featured;
+        //logic if new feature image is uploaded
+        if($request->hasFile('feature_image'))
         {
-            $post->featured = $request->featured;
-            //logic if new feature image is uploaded
-            if($request->hasFile('feature_image'))
+            //delete old image
+            $old_f_i = 'storage/files/blog_images/'.substr($request->c_feature_image,25);
+            $file = substr($request->c_feature_image,25);
+            if(file_exists($old_f_i)  && strlen($file)>0)
             {
-                //delete old image
-                $old_f_i = 'storage/files/blog_images/'.substr($request->c_feature_image,25);
-                $file = substr($request->c_feature_image,25);
-                if(file_exists($old_f_i)  && strlen($file)>0)
-                {
-                    unlink($old_f_i);
-                }
-                //save new to database
-                $post->feature_image = $request->feature_image->store('public/files/blog_images');
+                unlink($old_f_i);
             }
+            //save new to database
+            $post->feature_image = $request->feature_image->store('public/files/blog_images');
         }
-
-
-
-
 
         $post->meta_title = $request->meta_title;
         $post->meta_author = $request->meta_author;

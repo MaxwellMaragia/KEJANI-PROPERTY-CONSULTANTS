@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers\user;
 use App\case_study;
+use App\property;
+use App\type;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\View;
 use App\Download;
 use App\Http\Controllers\Controller;
@@ -45,14 +48,13 @@ class HomeController extends Controller
     public function home()
     {
         $seo = seo::where('page','home')->first();
-        $offer = offer::where('status','1')->first();
-        $quote = Inspiring::quote();
-        $banners = banner::where('status',1)->get();
+
         $services = service::where('status',1)->get();
-        $case_studies = case_study::where('status',1)->get();
-        $latest = post::join('users','users.id','=','posts.posted_by')->select('posts.*','users.name as name')->where('posts.status','1')->orderBy('posts.created_at','DESC')->take(3)->get();
-        $featured = post::join('users','users.id','=','posts.posted_by')->select('posts.*','users.name as name','users.avatar as avatar')->where('posts.status','1' and 'posts.featured','1')->orderBy('posts.created_at','DESC')->take(4)->get();
-        return view('user.home',compact('banners','quote','featured','offer','services','case_studies','seo'));
+        $banners = property::where('status',1 AND 'banner',1)->get();
+        $featured_properties = property::where('featured',1)->get();
+        $types = type::where('status',1)->get();
+        $featured_posts = post::join('users','users.id','=','posts.posted_by')->select('posts.*','users.name as name','users.avatar as avatar')->where('posts.status','1' and 'posts.featured','1')->orderBy('posts.created_at','DESC')->take(4)->get();
+        return view('user.home',compact('banners','featured_properties','services','seo','types'));
     }
 
     public function blog()
@@ -60,7 +62,7 @@ class HomeController extends Controller
         $seo = seo::where('page','blog')->first();
         $tags = tag::all();
         $categories = category::all();
-        $posts = post::join('users','users.id','=','posts.posted_by')->select('posts.*','users.name as name')->where('posts.status','1')->orderBy('posts.created_at','DESC')->paginate(8);
+        $posts = post::join('users','users.id','=','posts.posted_by')->select('posts.*','users.name as name','users.avatar as avatar')->where('posts.status','1')->orderBy('posts.created_at','DESC')->paginate(6);
         $featured = post::where('featured',1 AND 'status',1)->get();
         return view('user.blog',compact('posts','featured','seo','tags','categories'));
     }
@@ -76,7 +78,9 @@ class HomeController extends Controller
 
         $user_id = $post->posted_by;
         $user = User::where('id',$user_id)->first();
-        return view('user.post',compact('post','user'));
+        $tags = tag::all();
+        $categories = category::all();
+        return view('user.post',compact('post','user','tags','categories'));
     }
 
     public function service(service $service)
@@ -84,15 +88,25 @@ class HomeController extends Controller
         return view('user.service',compact('service'));
     }
 
-    public function offer(offer $offer)
+    public function property(property $property)
     {
-        return view('user.offer',compact('offer'));
+        $path = "properties/".$property->name."/carousel";
+        $images = Storage::disk('public')->files($path);
+        //$images = \File::allFiles(public_path("properties/".$property->name."/carousel"));
+        $featured = property::where('featured',1)->get();
+        return view('user.property',compact('property','images','featured'));
     }
 
-    public function offers(){
-        $seo = seo::where('page','offers')->first();
-        $offers = offer::all();
-        return view('user.offers',compact('offers','seo'));
+    public function buy(){
+        $seo = seo::where('page','Home')->first();
+        $properties = property::where('Property_status','For sale')->paginate();
+        return view('user.buy',compact('properties','seo'));
+    }
+
+    public function rent(){
+        $seo = seo::where('page','Home')->first();
+        $properties = property::where('Property_status','For rent')->paginate();
+        return view('user.rent',compact('properties','seo'));
     }
 
     public function contact(){

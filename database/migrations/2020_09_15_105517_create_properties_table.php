@@ -16,20 +16,22 @@ class CreatePropertiesTable extends Migration
         Schema::create('properties', function (Blueprint $table) {
             $table->id();
             $table->string("name")->unique();
+            $table->string("slug");
             $table->string("location");
             $table->string("price");
             $table->string("deposit")->nullable();
             $table->string("size");
-            $table->string("date_built");
+            $table->string("date_built")->nullable()->default("0");;
             $table->integer("garage")->nullable()->default("0");
-            $table->string("garage_size")->nullable()->default("0");
             $table->integer("bedroom")->nullable()->default("0");
             $table->integer("bathroom")->nullable()->default("0");
             $table->integer("kitchen")->nullable()->default("0");
             $table->string("Property_status");
             $table->string("image");
-            $table->string("video");
+            $table->string("video")->nullable()->default("0");
             $table->boolean("featured")->nullable()->default("0");
+            $table->boolean("banner")->nullable()->default("0");
+            $table->string('banner_image')->nullable();
             $table->boolean("status")->nullable()->default("0");;
             $table->longText("description")->index();
             $table->longText("Keywords");

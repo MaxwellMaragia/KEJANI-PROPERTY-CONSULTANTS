@@ -1,111 +1,87 @@
-<footer class="footer-strip-dark bg-extra-dark-gray padding-90px-tb lg-padding-70px-tb md-padding-50px-tb sm-padding-40px-tb">
+<!-- Our Footer -->
+<section class="footer_one">
     <div class="container">
-        <div class="row align-items-center sm-text-center">
-            <div class="col-md-8 col-12 sm-margin-30px-bottom">
-                <h5 class="text-white margin-5px-bottom">Let's make something great together</h5>
-                <span class="text-medium">{{ $footer_text->value }}</span>
+        <div class="row">
+            <div class="col-sm-6 col-md-6 col-lg-3 col-xl-3 pr0 pl0">
+                <div class="footer_about_widget">
+                    <h4>KEJANI PROPERTY CONSULTANTS</h4>
+                    <p>{{ $footer_text->value }}</p>
+                </div>
             </div>
-            <div class="col-md-4 col-12 text-md-right text-sm-center">
-                <span class="text-extra-large text-extra-dark-gray text-light-gray d-inline-block sm-d-block"><a href="{{ url('contact_us') }}" class="btn btn-large btn-transparent-white d-table d-lg-inline-block md-margin-lr-auto">Start a project</a></span>
+            <div class="col-sm-6 col-md-6 col-lg-3 col-xl-3">
+                <div class="footer_qlink_widget">
+                    <h4>Quick Links</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="{{ url('about_us') }}">About Us</a></li>
+                        <li><a href="{{ url('terms-and-conditions') }}">Terms & Conditions</a></li>
+                        <li><a href="{{ url('contact_us') }}">Contact us</a></li>
+                        <li><a target="_blank" href="{{ route('login') }}">Staff login</a></li>
+                    </ul>
+                </div>
             </div>
-        </div>
-        <div class="border-top border-color-medium-dark-gray padding-80px-top margin-80px-top lg-padding-60px-top lg-margin-60px-top md-padding-50px-top md-margin-50px-top sm-padding-40px-top sm-margin-40px-top">
-            <div class="row align-items-center">
-                <!-- start logo -->
-                <div class="col-lg-3 col-md-12 md-text-center md-margin-50px-bottom sm-margin-30px-bottom">
-                    <a href="https://codeisystems.co.ke"><img class="footer-logo" src="{{ Storage::url($logo_dark->value) }}" data-rjs="{{ Storage::url($logo_dark->value) }}" alt="CODEI SYSTEMS"></a>
-                </div>
-                <!-- end logo -->
-                <!-- start copyright -->
-                <div class="col-lg-4 col-md-5 col-12 sm-margin-30px-bottom text-medium sm-text-center">
-                   {{ $address->value }}
-                </div>
-                <div class="col-lg-3 col-md-4 col-12 sm-margin-30px-bottom text-medium sm-text-center">
-                    <a href="tel:{{ $mobile->value }}">{{ $mobile->value }}</a><br>
-                    <a href="{{ $email->value }}">{{ $email->value }}</a>
-                </div>
-                <!-- end copyright -->
-                <!-- start social media -->
-                <div class="col-lg-2 col-md-3 text-md-right sm-text-center">
-                    <div class="social-icon-style-8 d-inline-block vertical-align-middle">
-                        <ul class="small-icon mb-0">
-                            <li><a class="facebook text-white-2" href="{{ $facebook->value }}" target="_blank"><i class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
-                            <li><a class="linkedin text-white-2" href="{{ $linkedin->value }}" target="_blank"><i class="fab fa-linkedin"></i></a></li>
-                            <li><a class="github text-white-2" href="{{ $github->value }}" target="_blank"><i class="fab fa-github"></i></a></li>
+            <div class="col-sm-6 col-md-6 col-lg-3 col-xl-3">
+                <div class="footer_contact_widget">
+                    <h4>Contact Us</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="mailto: {{ $email->value }}">{{ $email->value }}</a></li>
+                        <li><a href="{{ $map->value }}">{{ $address->value }}</a></li>
+                        <li><a href="tel: {{ $mobile->value }}">{{ $mobile->value }}</a></li>
 
-                        </ul>
-                    </div>
+                    </ul>
                 </div>
-                <!-- end social media -->
+            </div>
+            <div class="col-sm-6 col-md-6 col-lg-3 col-xl-3">
+                <div class="footer_social_widget">
+                    <h4>Follow us</h4>
+                    <ul class="mb30">
+                        <li class="list-inline-item"><a href="#"><i class="fa fa-facebook"></i></a></li>
+                        <li class="list-inline-item"><a href="#"><i class="fa fa-twitter"></i></a></li>
+                        <li class="list-inline-item"><a href="#"><i class="fa fa-instagram"></i></a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</footer>
-<!-- end footer -->
-<!-- start scroll to top -->
-<a class="scroll-top-arrow" href="javascript:void(0);"><i class="ti-arrow-up"></i></a>
-<!-- end scroll to top -->
-<!-- javascript libraries -->
-<script type="text/javascript" src="{{ asset('user/js/jquery.js')}}"></script>
-<script type="text/javascript" src="{{ asset('user/js/modernizr.js')}}"></script>
-<script type="text/javascript" src="{{ asset('user/js/bootstrap.min.js')}}"></script>
-<script type="text/javascript" src="{{ asset('user/js/jquery.easing.1.3.js')}}"></script>
-<script type="text/javascript" src="{{ asset('user/js/skrollr.min.js')}}"></script>
-<script type="text/javascript" src="{{ asset('user/js/smooth-scroll.js')}}"></script>
-<script type="text/javascript" src="{{ asset('user/js/jquery.appear.js')}}"></script>
-<!-- menu navigation -->
-<script type="text/javascript" src="{{ asset('user/js/bootsnav.js')}}"></script>
-<script type="text/javascript" src="{{ asset('user/js/jquery.nav.js')}}"></script>
-<!-- animation -->
-<script type="text/javascript" src="{{ asset('user/js/wow.min.js')}}"></script>
-<!-- page scroll -->
-<script type="text/javascript" src="{{ asset('user/js/page-scroll.js')}}"></script>
-<!-- swiper carousel -->
-<script type="text/javascript" src="{{ asset('user/js/swiper.min.js')}}"></script>
-<!-- counter -->
-<script type="text/javascript" src="{{ asset('user/js/jquery.count-to.js')}}"></script>
-<!-- parallax -->
-<script type="text/javascript" src="{{ asset('user/js/jquery.stellar.js')}}"></script>
-<!-- magnific popup -->
-<script type="text/javascript" src="{{ asset('user/js/jquery.magnific-popup.min.js')}}"></script>
-<!-- portfolio with shorting tab -->
-<script type="text/javascript" src="{{ asset('user/js/isotope.pkgd.min.js')}}"></script>
-<!-- images loaded -->
-<script type="text/javascript" src="{{ asset('user/js/imagesloaded.pkgd.min.js')}}"></script>
-<!-- pull menu -->
-<script type="text/javascript" src="{{ asset('user/js/classie.js')}}"></script>
-<script type="text/javascript" src="{{ asset('user/js/hamburger-menu.js')}}"></script>
-<!-- counter -->
-<script type="text/javascript" src="{{ asset('user/js/counter.js')}}"></script>
-<!-- fit video -->
-<script type="text/javascript" src="{{ asset('user/js/jquery.fitvids.js')}}"></script>
-<!-- equalize -->
-<script type="text/javascript" src="{{ asset('user/js/equalize.min.js')}}"></script>
-<!-- skill bars -->
-<script type="text/javascript" src="{{ asset('user/js/skill.bars.jquery.js')}}"></script>
-<!-- justified gallery -->
-<script type="text/javascript" src="{{ asset('user/js/justified-gallery.min.js')}}"></script>
-<!--pie chart-->
-<script type="text/javascript" src="{{ asset('user/js/jquery.easypiechart.min.js')}}"></script>
-<!-- instagram -->
-<script type="text/javascript" src="{{ asset('user/js/instafeed.min.js')}}"></script>
-<!-- retina -->
-<script type="text/javascript" src="{{ asset('user/js/retina.min.js')}}"></script>
-<!-- revolution -->
-<script type="text/javascript" src="{{ asset('user/revolution/js/jquery.themepunch.tools.min.js')}}"></script>
-<script type="text/javascript" src="{{ asset('user/revolution/js/jquery.themepunch.revolution.min.js')}}"></script>
+</section>
+<!-- Our Footer Bottom Area -->
+<section class="footer_middle_area pt40 pb40">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="copyright-widget text-right">
+                    <p>© <script>document.write(new Date().getFullYear());</script> Kejani Property Consultants. Developed by <a
+                            href="https://codeisystems.co.ke" target="_blank">CODEI SYSTEMS</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<a class="scrollToHome home8" href="#"><i class="flaticon-arrows"></i></a>
+</div>
 
-<!-- revolution slider extensions (load below extensions JS files only on local file systems to make the slider work! The following part can be removed on server for on demand loading) -->
-<script type="text/javascript" src="{{ asset('user/revolution/js/extensions/revolution.extension.actions.min.js')}}"></script>
-<script type="text/javascript" src="{{ asset('user/revolution/js/extensions/revolution.extension.carousel.min.js')}}"></script>
-<script type="text/javascript" src="{{ asset('user/revolution/js/extensions/revolution.extension.kenburn.min.js')}}"></script>
-<script type="text/javascript" src="{{ asset('user/revolution/js/extensions/revolution.extension.layeranimation.min.js')}}"></script>
-<script type="text/javascript" src="{{ asset('user/revolution/js/extensions/revolution.extension.migration.min.js')}}"></script>
-<script type="text/javascript" src="{{ asset('user/revolution/js/extensions/revolution.extension.navigation.min.js')}}"></script>
-<script type="text/javascript" src="{{ asset('user/revolution/js/extensions/revolution.extension.parallax.min.js')}}"></script>
-<script type="text/javascript" src="{{ asset('user/revolution/js/extensions/revolution.extension.slideanims.min.js')}}"></script>
-<script type="text/javascript" src="{{ asset('user/revolution/js/extensions/revolution.extension.video.min.js')}}"></script>
-<!-- setting -->
-<script type="text/javascript" src="{{ asset('user/js/main.js') }}"></script>
+<!-- Wrapper End -->
+<script type="text/javascript" src="{{ asset("user/js/jquery-3.3.1.js")}}"></script>
+<script type="text/javascript" src="{{ asset("user/js/jquery-migrate-3.0.0.min.js")}}"></script>
+<script type="text/javascript" src="{{ asset("user/js/popper.min.js")}}"></script>
+<script type="text/javascript" src="{{ asset("user/js/bootstrap.min.js")}}"></script>
+<script type="text/javascript" src="{{ asset("user/js/jquery.mmenu.all.js")}}"></script>
+<script type="text/javascript" src="{{ asset("user/js/ace-responsive-menu.js")}}"></script>
+<script type="text/javascript" src="{{ asset("user/js/bootstrap-select.min.js")}}"></script>
+<script type="text/javascript" src="{{ asset("user/js/isotop.js")}}"></script>
+<script type="text/javascript" src="{{ asset("user/js/snackbar.min.js")}}"></script>
+<script type="text/javascript" src="{{ asset("user/js/simplebar.js")}}"></script>
+<script type="text/javascript" src="{{ asset("user/js/parallax.js")}}"></script>
+<script type="text/javascript" src="{{ asset("user/js/scrollto.js")}}"></script>
+<script type="text/javascript" src="{{ asset("user/js/jquery-scrolltofixed-min.js")}}"></script>
+<script type="text/javascript" src="{{ asset("user/js/jquery.counterup.js")}}"></script>
+<script type="text/javascript" src="{{ asset("user/js/wow.min.js")}}"></script>
+<script type="text/javascript" src="{{ asset("user/js/progressbar.js")}}"></script>
+<script type="text/javascript" src="{{ asset("user/js/slider.js")}}"></script>
+<script type="text/javascript" src="{{ asset("user/js/timepicker.js")}}"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBCmkDpS9DDEV73V2YT1OeOK4tA-HcSxDQ"type="text/javascript"></script>
+<script type="text/javascript" src="{{ asset("user/js/google-maps.js")}}"></script>
+<!-- Custom script for all pages -->
+<script type="text/javascript" src="{{ asset("user/js/script.js")}}"></script>
 @section('additional-js')
-    @show
+
+@show

@@ -21,9 +21,7 @@
 
             <div class="box">
                 <div class="box-header">
-                    @can('posts.create',Auth::user())
-                      <a href="{{ route('post.create') }}" class="btn btn-primary"><span class="fa fa-plus"></span>   Add new</a>
-                    @endcan
+                    <a href="{{ route('post.create') }}" class="btn btn-primary"><span class="fa fa-plus"></span>   Add new</a>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">

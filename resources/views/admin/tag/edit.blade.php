@@ -40,11 +40,6 @@
                                         <label for="name">Tag</label>
                                         <input type="text" class="form-control" id="name" name="name" placeholder="Tag" value="{{ $tag->name }}">
                                     </div>
-
-                                    <div class="form-group">
-                                        <label for="slug">Slug</label>
-                                        <input type="text" class="form-control" id="slug" name="slug" placeholder="Slug" value="{{ $tag->slug }}">
-                                    </div>
                                 </div>
 
                             </div>

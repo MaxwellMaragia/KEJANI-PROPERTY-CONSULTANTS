@@ -35,14 +35,14 @@
                     <!-- small box -->
                     <div class="small-box bg-green">
                         <div class="inner">
-                            <h3>{{ $unpublished->count() }}</h3>
+                            <h3>{{ $properties->count() }}</h3>
 
-                            <p>Unpublished posts</p>
+                            <p>Total properties</p>
                         </div>
                         <div class="icon">
-                            <i class="ion ion-person"></i>
+                            <i class="ion ion-home"></i>
                         </div>
-                        <a href="{{ route('post.index') }}" class="small-box-footer">View all <i class="fa fa-arrow-circle-right"></i></a>
+                        <a href="{{ route('properties.index') }}" class="small-box-footer">View all <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -50,14 +50,14 @@
                     <!-- small box -->
                     <div class="small-box bg-yellow">
                         <div class="inner">
-                            <h3>{{ $users->count() }}</h3>
+                            <h3>{{ $active->count() }}</h3>
 
-                            <p>Total users</p>
+                            <p>Active properties</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-laptop"></i>
                         </div>
-                        <a href="{{ route('user.index') }}" class="small-box-footer">View all <i class="fa fa-arrow-circle-right"></i></a>
+                        <a href="{{ route('properties.index') }}" class="small-box-footer">View all <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -66,56 +66,56 @@
                     <div class="small-box bg-red">
                         <div class="inner">
                             <h3>
-                                {{ $unactivated->count() }}
+                                {{ $featured->count() }}
                             </h3>
 
-                            <p>Unactivated users</p>
+                            <p>Featured properties</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-email"></i>
                         </div>
-                        <a href="{{ url('admin/users') }}" class="small-box-footer">View all <i class="fa fa-arrow-circle-right"></i></a>
+                        <a href="{{ route('properties.index') }}" class="small-box-footer">View all <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
             </div>
             <div class="row">
                 <div class="col-md-6">
-                    <!-- USERS LIST -->
-                    <div class="box box-danger">
+                    <div class="box box-primary">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Latest Members</h3>
-
-                            <div class="box-tools pull-right">
-                                <span class="label label-danger">Members list</span>
-                            </div>
+                            <h3 class="box-title">Featured properties</h3>
                         </div>
                         <!-- /.box-header -->
-                        <div class="box-body no-padding">
-                            <ul class="users-list clearfix">
-                                @foreach($users as $member)
-                                    <li>
-                                        <img src="{{ Storage::url($member->avatar) }}" alt="User Image" style="max-width: 70px;">
-                                        <a class="users-list-name text-danger" href="{{ route('user.edit',$member->id) }}">{{ $member->name }}</a>
-                                        @if($member->status == 1)
-                                            <span class="badge success">active</span>
-                                        @else
-                                            <span class="badge success">Not active</span>
+                        <div class="box-body">
+                            <ul class="products-list product-list-in-box">
+                                @foreach($featured as $property)
+                                    <li class="item">
+                                        <div class="product-img">
+                                            <img src="{{ Storage::url($property->image) }}" alt="Product Image">
+                                        </div>
+                                        <div class="product-info">
+                                            @if($property->featured == 1)
+                                                <span class="label label-success pull-right">Featured</span>
+                                            @else
+                                                <span class="label label-danger pull-right">Not featured</span>
                                             @endif
 
+                                            <a href="{{ route('properties.edit',$property->id) }}">
+                                                    <span class="product-description">
+                                                      {{ $property->name }}
+                                                    </span>
+                                            </a>
+                                        </div>
                                     </li>
-                                    @endforeach
-
+                                @endforeach
                             </ul>
-                            <!-- /.users-list -->
                         </div>
                         <!-- /.box-body -->
                         <div class="box-footer text-center">
-                            <a href="{{ route('user.index') }}" class="uppercase">View All Users</a>
+                            <a href="javascript:void(0)" class="uppercase">View All Products</a>
                         </div>
                         <!-- /.box-footer -->
                     </div>
-                    <!--/.box -->
                 </div>
                 <div class="col-md-6">
                     <div class="box box-primary">
