@@ -4,7 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Admin\seo;
+use App\Model\admin\seo;
 use Illuminate\Support\Facades\Auth;
 
 class SeoController extends Controller

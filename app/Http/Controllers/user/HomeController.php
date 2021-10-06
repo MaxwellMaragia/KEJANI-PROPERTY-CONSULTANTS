@@ -20,7 +20,7 @@ use App\team_member;
 use App\testimonials;
 use App\User;
 use App\settings;
-use App\Admin\seo;
+use App\Model\admin\seo;
 use Illuminate\Foundation\Inspiring;
 
 
